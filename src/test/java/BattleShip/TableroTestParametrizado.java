@@ -94,7 +94,9 @@ class TableroTestParametrizado {
 	    for (int i = 0; i < barco.size(); i = i + 2) {
 	    	
 	    	assertEquals(1, t1.valorPosicion(barco.get(i), barco.get(i + 1)));
+	    	assertTrue(t1.comprobarTirada(barco.get(i), barco.get(i + 1)));
 	    	assertEquals(0, t1.valorPosicion(agua.get(i), agua.get(i + 1)));
+	    	assertFalse(t1.comprobarTirada(agua.get(i), agua.get(i + 1)));
 			
 		}
 		
