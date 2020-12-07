@@ -20,33 +20,60 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 @TestInstance(value = Lifecycle.PER_CLASS)
 class TableroTestParametrizado {
 	
-	ArrayList<Integer> arrai = new ArrayList<Integer>();
+	ArrayList<Integer> barco = new ArrayList<Integer>();
+	ArrayList<Integer> agua = new ArrayList<Integer>();
 	int count = 0;
-	@ParameterizedTest(name = "{index} => a={0}, b={1}")
-	@CsvFileSource(resources = "/tablerotest.csv")
-	void rellenar(int a, int b) {
+	@ParameterizedTest(name = "{index} => a={0}, b={1}, c={2}, d={3}")
+	@CsvFileSource(resources = "/barco.csv")
+
+	void rellenar(int a, int b, int c, int d) {
 		
-		arrai.add(a);
-		arrai.add(b);
+		barco.add(a);
+		barco.add(b);
+		agua.add(c);
+		agua.add(d);
+
 
 	}
 	
 	@AfterAll
-	@Test
+	//@Test
 	void test() {
 		
 		if (count == 0) {
-		
-			for (int i = 0; i < arrai.size(); i++) {
+			
+			int line = 0;
+		System.out.println("valores de barcos");
+			for (int i = 0; i < barco.size(); i++) {
 				
-				System.out.print(arrai.get(i));
+				System.out.print(barco.get(i));
 				System.out.print(" ");
 				
+				line++;
+				if (line == 2) {
+					System.out.println();
+					line = 0;
+				}
 			}
+		System.out.println("Valores de agua");
+			for (int i = 0; i < agua.size(); i++) {
+				
+				System.out.print(agua.get(i));
+				System.out.print(" ");
+				
+				line++;
+				if (line == 2) {
+					System.out.println();
+					line = 0;
+				}
+			}
+			
+			
+		
 		}
 		count++;
+
 	}
-	
 	
 	@Test
 	public void testValorPsoicion()  // En este metodo nunca habra valores erroneos de X, e Y, se comprueban anteriormente.
@@ -62,36 +89,14 @@ class TableroTestParametrizado {
 	    t1.addBarco(5, 6, "H", 3,b); // 2
 	    t1.addBarco(1, 4, "H", 4,b); //3
 	    
-	    int res = -1;
+	    t1.mostrarTablero();
 	    
-	    for (int i = 0; i < arrai.size(); i = i + 2) {
+	    for (int i = 0; i < barco.size(); i = i + 2) {
 	    	
-	    	res = t1.valorPosicion(arrai.get(i), arrai.get(i + 1));
-	    	
-	    	assertEquals(1, res);
+	    	assertEquals(1, t1.valorPosicion(barco.get(i), barco.get(i + 1)));
+	    	assertEquals(0, t1.valorPosicion(agua.get(i), agua.get(i + 1)));
 			
 		}
-	    
-	    //t1.mostrarTablero();
-
-	    /*int res1 = t1.valorPosicion(1, 1); //Casilla ocupada 1
-	    assertEquals(res1,1);
-	    
-	    int res2 = t1.valorPosicion(5, 6); //Casilla ocupada 2 
-	    assertEquals(res2,1);
-	    
-	    int res3 = t1.valorPosicion(1, 4); //Casilla ocupada 3
-	    assertEquals(res3,1);
-	    
-	    int res4 = t1.valorPosicion(6, 5); //Casilla libre (agua)
-	    assertEquals(res4,0);*/
-	    
-
-
-	    
-	    
-	    
-		
 		
 	}
 
