@@ -91,12 +91,28 @@ class TableroTestParametrizado {
 	    
 	    t1.mostrarTablero();
 	    
+	    
+	    
+	    for (int j = 0; j < 4; j = j + 2) {
+			b.agregarCoordenadas(barco.get(j), barco.get(j + 1));
+			assertEquals(true, b.comprobarCoordenadas(barco.get(j), barco.get(j + 1)));
+		}
+	    /*
+	    for (int k = 0; k < 4; k = k + 2) {
+	    	assertEquals(false, b.comprobarCoordenadas(barco.get(k), barco.get(k + 1)));
+		}
+	    */
+	    
 	    for (int i = 0; i < barco.size(); i = i + 2) {
 	    	
 	    	assertEquals(1, t1.valorPosicion(barco.get(i), barco.get(i + 1)));
 	    	assertTrue(t1.comprobarTirada(barco.get(i), barco.get(i + 1)));
 	    	assertEquals(0, t1.valorPosicion(agua.get(i), agua.get(i + 1)));
 	    	assertFalse(t1.comprobarTirada(agua.get(i), agua.get(i + 1)));
+	    	
+	    	
+	    	assertEquals(false, b.comprobarCoordenadas(agua.get(i), agua.get(i + 1)));
+	    	
 			
 		}
 		

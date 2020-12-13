@@ -5,6 +5,36 @@ import java.util.ArrayList;
 public class MockDatosJugar implements DatosJugar{
 	
 	private ArrayList<Integer>coordX = new ArrayList<Integer>();
+	public ArrayList<Integer> getCoordX() {
+		return coordX;
+	}
+	public void setCoordX(ArrayList<Integer> coordX) {
+		this.coordX = coordX;
+	}
+	public ArrayList<Integer> getCoordY() {
+		return coordY;
+	}
+	public void setCoordY(ArrayList<Integer> coordY) {
+		this.coordY = coordY;
+	}
+	public ArrayList<Integer> getCoordDisparoX() {
+		return coordDisparoX;
+	}
+	public void setCoordDisparoX(ArrayList<Integer> coordDisparoX) {
+		this.coordDisparoX = coordDisparoX;
+	}
+	public ArrayList<Integer> getCoordDisparoY() {
+		return coordDisparoY;
+	}
+	public void setCoordDisparoY(ArrayList<Integer> coordDisparoY) {
+		this.coordDisparoY = coordDisparoY;
+	}
+	public ArrayList<String> getPosi() {
+		return posi;
+	}
+	public void setPosi(ArrayList<String> posi) {
+		this.posi = posi;
+	}
 	private ArrayList<Integer>coordY= new ArrayList<Integer>();
 	private ArrayList<Integer>coordDisparoX = new ArrayList<Integer>();
 	private ArrayList<Integer>coordDisparoY= new ArrayList<Integer>();
