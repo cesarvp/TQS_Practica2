@@ -31,7 +31,7 @@ class PartidaParametrizada {
 	
 	int count = 0;
 	@ParameterizedTest(name = "{index} => a={0}, b={1}, c={2}, d={3}, e={4} , f={5}, g={6} , h={7}, i={8} , j={9} ")
-	@CsvFileSource(resources = "/partida.csv")
+	@CsvFileSource(resources = "/partida1.csv")
 	
 	void rellenar(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) {
 		
@@ -49,17 +49,49 @@ class PartidaParametrizada {
 		disparoj2.add(i);
 		disparoj2.add(j);
 		
-
+		
 	}
 	
-	//@Test
+	/*ArrayList<Integer> barcoj1final = new ArrayList<Integer>();
+	
+	ArrayList<Integer> barcoj2final = new ArrayList<Integer>();
+	
+	ArrayList<Integer> disparoj1final = new ArrayList<Integer>();
+	
+	ArrayList<Integer> disparoj2final = new ArrayList<Integer>();*/
+	/*
+	void preparar(){
+		
+		if (count == 0) {
+			
+			int line = 0;
+
+			for (int i = 0; i < 24; i++) {
+				
+				barcoj1final.add(barcoj1.get(i));
+				barcoj2final.add(barcoj2.get(i));
+				
+				line++;
+				if (line == 3) {
+					System.out.println();
+					line = 0;
+				}
+				
+
+			}
+			
+		}
+		
+	}
+	*/
+	@Test
 	void datos() {
 		
 		if (count == 0) {
 			
 			int line = 0;
 		System.out.println("valores barcoj1");
-			for (int i = 0; i < barcoj1.size(); i++) {
+			for (int i = 0; i < 24; i++) {
 				
 				System.out.print(barcoj1.get(i));
 				System.out.print(" ");
@@ -74,7 +106,7 @@ class PartidaParametrizada {
 			}
 			
 			System.out.println("valores barcoj2");
-			for (int j = 0; j < barcoj1.size(); j++) {
+			for (int j = 0; j < 24; j++) {
 				
 				System.out.print(barcoj2.get(j));
 				System.out.print(" ");
@@ -86,6 +118,23 @@ class PartidaParametrizada {
 				}
 				
 
+			}
+			System.out.println("Disparos J1");
+			for (int k = 0; k < disparoj1.size(); k = k + 2) {
+				
+				System.out.print(disparoj1.get(k));
+				System.out.print(disparoj1.get(k + 1));
+				System.out.println();
+				
+			}
+			
+			System.out.println("Disparos J2");
+			for (int k = 0; k < disparoj2.size(); k = k + 2) {
+				
+				System.out.print(disparoj2.get(k));
+				System.out.print(disparoj2.get(k + 1));
+				System.out.println();
+				
 			}
 			
 		
@@ -104,7 +153,7 @@ class PartidaParametrizada {
 	
 	
 	
-	@Test
+	//@Test
 	void partida1() {
 	    Juego juego = new Juego();
     	Jugador j1 = new Jugador("j1");
