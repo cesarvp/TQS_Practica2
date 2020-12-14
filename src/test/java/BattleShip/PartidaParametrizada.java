@@ -52,39 +52,8 @@ class PartidaParametrizada {
 		
 	}
 	
-	/*ArrayList<Integer> barcoj1final = new ArrayList<Integer>();
-	
-	ArrayList<Integer> barcoj2final = new ArrayList<Integer>();
-	
-	ArrayList<Integer> disparoj1final = new ArrayList<Integer>();
-	
-	ArrayList<Integer> disparoj2final = new ArrayList<Integer>();*/
-	/*
-	void preparar(){
-		
-		if (count == 0) {
-			
-			int line = 0;
 
-			for (int i = 0; i < 24; i++) {
-				
-				barcoj1final.add(barcoj1.get(i));
-				barcoj2final.add(barcoj2.get(i));
-				
-				line++;
-				if (line == 3) {
-					System.out.println();
-					line = 0;
-				}
-				
-
-			}
-			
-		}
-		
-	}
-	*/
-	@Test
+	//@Test
 	void datos() {
 		
 		if (count == 0) {
@@ -153,7 +122,7 @@ class PartidaParametrizada {
 	
 	
 	
-	//@Test
+	@Test
 	void partida1() {
 	    Juego juego = new Juego();
     	Jugador j1 = new Jugador("j1");
@@ -179,7 +148,7 @@ class PartidaParametrizada {
     	ArrayList<String> p1 = new ArrayList<>();
     	
     	
-    	for (int i = 0; i < barcoj1.size(); i = i + 3) {
+    	for (int i = 0; i < 24; i = i + 3) {
 			x1.add(barcoj1.get(i));
 			y1.add(barcoj1.get(i + 1));
 			if (barcoj1.get(i + 2) == 1) {
@@ -208,35 +177,100 @@ class PartidaParametrizada {
     	/*
     	 * Introducir las posiciones que el Jugador1 usara para disparar
     	 */
+    	ArrayList<Integer> dx1 = new ArrayList<>();
+    	ArrayList<Integer> dy1 = new ArrayList<>();
+    	for (int k = 0; k < disparoj1.size(); k = k + 2) {
+			dx1.add(disparoj1.get(k));
+			dy1.add(disparoj1.get(k + 1));
+		}
+    	
+    	mck.setCoordDisparoX(dx1);
+    	mck.setCoordDisparoY(dy1);
+    	
+    	System.out.println("dx1");
+    	System.out.println(mck.getCoordDisparoX());
+    	System.out.println("dy1");
+    	System.out.println(mck.getCoordDisparoY());
+    	
+    	juego.jugar(j1);
+    	
+    	int hun= j1.numeroHundidos();
+    	int toc =j1.numeroTocados();
+    	assertEquals(hun,4);
+    	assertEquals(toc,9);
+    	
+    	/*
+    	 * Turno del jugador 2
+    	 */
+        juego.resetTablerosYBarcos();
+        
+    	/*
+    	 * Introducir barcos del Jugador2 de forma parametrizada
+    	 */
+        
+        
+    	
+    	ArrayList<Integer> x2 = new ArrayList<>();
+    	ArrayList<Integer> y2 = new ArrayList<>();
+    	ArrayList<String> p2 = new ArrayList<>();
     	
     	
+    	for (int i = 0; i < 24; i = i + 3) {
+			x1.add(barcoj2.get(i));
+			y1.add(barcoj2.get(i + 1));
+			if (barcoj2.get(i + 2) == 1) {
+				p1.add("V");
+			}else {
+				p1.add("H");
+			}
+			
+			
+		}
+    	
+    	mck.setCoordX(x1);
+    	mck.setCoordY(y1);
+    	mck.setPosi(p1);
+    	/*
+    	System.out.println("X2");
+    	System.out.println(mck.getCoordX());
+    	System.out.println("Y2");
+    	System.out.println(mck.getCoordY());
+    	System.out.println("P2");
+    	System.out.println(mck.getPosi());
+    	*/
+    	juego.tipoEntradaDatos(mck);
+    	juego.colocarBarcos();
     	
     	
     	/*
+    	 * Introducir las posiciones que el Jugador2 usara para disparar
+    	 */
     	
-    	mck.entradasTeclado(partida1.get(2)); // Hay que poner la opcion 2 para que coja los datos de disparar.
-    	juego.jugar(j1); // Aqui le pasamos el jugador que juega, pero las entradas las mete el mock.
-
-    	int hun= j1.numeroHundidos();
-    	int toc =j1.numeroTocados();
-    	assertEquals(hun,partida1.get(3));
-    	assertEquals(toc,partida1.get(4));
-		
-        juego.resetTablerosYBarcos();
+    	ArrayList<Integer> dx2 = new ArrayList<>();
+    	ArrayList<Integer> dy2 = new ArrayList<>();
+    	for (int k = 0; k < disparoj2.size(); k = k + 2) {
+			dx1.add(disparoj2.get(k));
+			dy1.add(disparoj2.get(k + 1));
+		}
     	
-    	mck.entradasTeclado(partida1.get(5));
-    	juego.tipoEntradaDatos(mck);
-    	juego.colocarBarcos();
-    	mck.entradasTeclado(partida1.get(6));
+    	mck.setCoordDisparoX(dx1);
+    	mck.setCoordDisparoY(dy1);
+    	/*
+    	System.out.println("dx2");
+    	System.out.println(mck.getCoordDisparoX());
+    	System.out.println("dy2");
+    	System.out.println(mck.getCoordDisparoY());
+    	*/
     	juego.jugar(j2);
     	
     	int hun2= j2.numeroHundidos();
-    	int toc2 =j2.numeroTocados();
-    	assertEquals(hun2,partida1.get(7));
-    	assertEquals(toc2,partida1.get(8));
+    	int toc2=j2.numeroTocados();
+    	assertEquals(hun2,4);
+    	assertEquals(toc2,10);
     	
     	juego.determinarGanador(j1, j2);
-    	*/
+        
+    	
 	}
 	
 	
